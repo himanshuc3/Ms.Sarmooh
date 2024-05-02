@@ -1,0 +1,178 @@
+<script lang="ts">
+import Fireworks from './components/fireworks/index.vue'
+
+const MADAM_STATUS: { [key: string]: 0 | 1 } = {
+  YES: 0,
+  NO: 1
+}
+export default {
+  components: {
+    Fireworks
+  },
+  data() {
+    return {
+      noTexts: [
+        'No',
+        'Are you sure?',
+        'Are you pawsitive?',
+        'Absolutely sure pumpkin?',
+        'Madam ji, think about it',
+        'If you say no, me sad',
+        'Me very very sad',
+        'Me very very very sad',
+        'Me very very very very sad',
+        "Ok fine, I'll stop asking",
+        'Just kidding, PLEASE SAY YES',
+        "Don't be a thief of joy!",
+        "You're breaking my heart"
+      ],
+      fireworks: new Array(5),
+      noIndex: 0,
+      status: MADAM_STATUS.NO,
+      MADAM_STATUS
+    }
+  },
+
+  methods: {
+    onConfirm(e: any) {
+      e.preventDefault()
+      this.status = MADAM_STATUS.YES
+    },
+    onCancel(e: any) {
+      e.preventDefault()
+      this.noIndex++
+    }
+  },
+  computed: {
+    noText() {
+      return this.noTexts[this.noIndex % this.noTexts.length]
+    },
+    buttonSize() {
+      return {
+        fontSize: this.noIndex * 13 + 16 + 'px'
+      }
+    }
+  }
+}
+</script>
+
+<template>
+  <div id="root-askherout">
+    <Fireworks v-if="status == MADAM_STATUS.YES" v-for="firwork in fireworks" />
+    <div v-if="status == MADAM_STATUS.NO" class="askingher">
+      <img
+        class="title-gif"
+        src="https://gifdb.com/images/high/cute-love-bear-roses-ou7zho5oosxnpo6k.gif"
+        alt=""
+      />
+      <h1 class="title">
+        Will you <span class="valentine">be my valentine</span> regroup our chemistry?
+      </h1>
+      <div class="cta-container">
+        <button @click="onConfirm" :style="buttonSize">
+          <a href="https://www.yes.com">Yes</a>
+        </button>
+        <button @click="onCancel">
+          <a href="https://www.no.com">{{ noText }}</a>
+        </button>
+      </div>
+    </div>
+    <div v-else class="final">
+      <img src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif" alt="" />
+      <h2>Ok yay, I want us time!</h2>
+      <h2 class="greyed-sub">I miss your Kuch bhi(s) and As if(s)!</h2>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+.askingher,
+#root-askherout {
+  width: 500px;
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.askingher {
+  width: 100%;
+}
+
+h1,
+h2 {
+  color: black;
+  text-align: center;
+}
+.title-gif {
+  height: 200px;
+}
+
+.cta-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.valentine {
+  color: rgba(200, 200, 200, 0.8);
+  text-decoration: line-through;
+}
+
+button,
+input[type='submit'],
+input[type='reset'] {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  border-radius: 5px;
+  color: white;
+  padding: 0.5rem 1rem;
+}
+
+button {
+  margin: 5px;
+}
+button a {
+  font-weight: bold;
+  color: white;
+}
+
+.final {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.final img {
+  height: 200px;
+  width: auto;
+  object-fit: contain;
+}
+
+.final h2 {
+  font-weight: bold;
+  font-size: 1.75rem;
+  margin-top: 20px;
+}
+.final .greyed-sub {
+  color: rgba(200, 200, 200, 0.8);
+  font-size: 1.5rem;
+  font-weight: normal;
+}
+
+#root-askherout button:first-child {
+  background-color: rgb(34, 197, 94);
+  margin-right: 20px;
+}
+
+button:nth-child(2) {
+  background-color: rgb(239, 68, 68);
+}
+</style>
