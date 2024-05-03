@@ -83,9 +83,9 @@ export default {
         Will you
         <div class="parent-staggers">
           <div class="staggers">
-            <div>give me second chance?</div>
-            <div>recoup our chemistry?</div>
-            <div>be my +1?</div>
+            <div>want to go for slow walks with me?</div>
+            <div>want more 11th Avenue dates?</div>
+            <div>give me a second chance?</div>
             <div>be my MADAM JI?</div>
           </div>
         </div>
