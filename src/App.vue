@@ -2,9 +2,10 @@
 import Fireworks from './components/fireworks/index.vue'
 import gsap from 'gsap'
 
-const MADAM_STATUS: { [key: string]: 0 | 1 } = {
+const MADAM_STATUS: { [key: string]: 0 | 1 | 2 } = {
   YES: 0,
-  NO: 1
+  NO: 1,
+  BROKEN_HEART: 2
 }
 
 let animation = gsap.timeline({ repeat: 20 })
@@ -38,7 +39,7 @@ export default {
         "Ok fine, I'll stop asking",
         'Just kidding, PLEASE SAY YES',
         "Don't be a thief of joy!",
-        "You're breaking my heart"
+        "You're breaking my heart :("
       ],
       fireworks: new Array(5),
       noIndex: 0,
@@ -54,6 +55,10 @@ export default {
     },
     onCancel(e: any) {
       e.preventDefault()
+      if (this.noIndex == this.noTexts.length - 1) {
+        this.status = MADAM_STATUS.BROKEN_HEART
+        return
+      }
       this.noIndex++
     }
   },
@@ -63,7 +68,7 @@ export default {
     },
     buttonSize() {
       return {
-        fontSize: this.noIndex * 13 + 16 + 'px'
+        fontSize: this.noIndex * 15 + 16 + 'px'
       }
     }
   }
@@ -98,6 +103,17 @@ export default {
           <a href="https://www.no.com">{{ noText }}</a>
         </button>
       </div>
+    </div>
+
+    <div v-else-if="status == MADAM_STATUS.BROKEN_HEART" class="final">
+      <img src="https://media.tenor.com/hV-KbIYraLcAAAAi/milk-and-mocha-bear.gif" alt="" />
+      <h2>You really wanted to click no HUH 💔</h2>
+      <h2 class="greyed-sub">
+        Paste the line in chat:<br />
+        "I Donut care about you." <br />
+        & I'll understand you are Robert Frost <br />
+        and I am the road not taken.
+      </h2>
     </div>
     <div v-else class="final">
       <img src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif" alt="" />
