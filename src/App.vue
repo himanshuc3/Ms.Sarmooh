@@ -222,4 +222,9 @@ button a {
 button:nth-child(2) {
   background-color: rgb(239, 68, 68);
 }
+@media screen and (max-width: 800px) {
+  .staggers div {
+    font-size: 1.5rem;
+  }
+}
 </style>
