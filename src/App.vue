@@ -101,7 +101,7 @@ export default {
     </div>
     <div v-else class="final">
       <img src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif" alt="" />
-      <h2>Ok yay, I want <span class="poster-color">us</span> time!</h2>
+      <h2>Ok yay, I want us time 💑</h2>
       <h2 class="greyed-sub">I miss your Kuch bhi(s), As if(s) and "Good mornings"!</h2>
     </div>
   </div>
