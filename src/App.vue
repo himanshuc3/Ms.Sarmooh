@@ -1,11 +1,25 @@
 <script lang="ts">
 import Fireworks from './components/fireworks/index.vue'
+import gsap from 'gsap'
 
 const MADAM_STATUS: { [key: string]: 0 | 1 } = {
   YES: 0,
   NO: 1
 }
+
+let animation = gsap.timeline({ repeat: 20 })
+
+function init() {
+  gsap.set('.staggers', { autoAlpha: 1 })
+  animation
+    .from('.staggers div', { y: 40, opacity: 0, stagger: 2 })
+    .to('.staggers div', { y: -40, opacity: 0, stagger: 2 }, 2)
+}
+
 export default {
+  mounted() {
+    init()
+  },
   components: {
     Fireworks
   },
@@ -66,7 +80,15 @@ export default {
         alt=""
       />
       <h1 class="title">
-        Will you <span class="valentine">be my valentine</span> regroup our chemistry?
+        Will you
+        <div class="parent-staggers">
+          <div class="staggers">
+            <div>give me second chance?</div>
+            <div>recoup our chemistry?</div>
+            <div>be my +1?</div>
+            <div>be my MADAM JI?</div>
+          </div>
+        </div>
       </h1>
       <div class="cta-container">
         <button @click="onConfirm" :style="buttonSize">
@@ -80,7 +102,7 @@ export default {
     <div v-else class="final">
       <img src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif" alt="" />
       <h2>Ok yay, I want us time!</h2>
-      <h2 class="greyed-sub">I miss your Kuch bhi(s) and As if(s)!</h2>
+      <h2 class="greyed-sub">I miss your Kuch bhi(s), As if(s) and "Good mornings"!</h2>
     </div>
   </div>
 </template>
@@ -142,6 +164,31 @@ button {
 button a {
   font-weight: bold;
   color: white;
+}
+
+/* button a:hover {
+  background-color: inherit; */
+/* } */
+
+.parent-staggers {
+  position: relative;
+}
+.staggers {
+  perspective: 200px;
+  visibility: hidden;
+  height: 100%;
+  display: inline-block;
+}
+
+.staggers div {
+  position: absolute;
+  display: inline-block;
+  left: 50%;
+  top: 50%;
+  font-weight: 600;
+  font-size: 2rem;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
 }
 
 .final {
