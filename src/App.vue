@@ -83,10 +83,10 @@ export default {
         Will you
         <div class="parent-staggers">
           <div class="staggers">
-            <div>want to go for slow walks with me?</div>
-            <div>want more 11th Avenue dates?</div>
-            <div>give me a second chance?</div>
-            <div>be my MADAM JI?</div>
+            <div>want to go for <span class="yellow">slow walks with me 🧑‍🤝‍🧑</span></div>
+            <div>want more <span class="yellow">11th Avenue dates ☕</span></div>
+            <div>give me a <span class="yellow">second chance 🤞</span></div>
+            <div>be my <span class="poster-color">MADAM JI 👧</span></div>
           </div>
         </div>
       </h1>
@@ -101,7 +101,7 @@ export default {
     </div>
     <div v-else class="final">
       <img src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif" alt="" />
-      <h2>Ok yay, I want us time!</h2>
+      <h2>Ok yay, I want <span class="poster-color">us</span> time!</h2>
       <h2 class="greyed-sub">I miss your Kuch bhi(s), As if(s) and "Good mornings"!</h2>
     </div>
   </div>
@@ -158,6 +158,12 @@ input[type='reset'] {
   padding: 0.5rem 1rem;
 }
 
+.yellow {
+  color: #256f56;
+}
+.poster-color {
+  color: #c66053;
+}
 button {
   margin: 5px;
 }
@@ -209,7 +215,8 @@ button a {
   margin-top: 20px;
 }
 .final .greyed-sub {
-  color: rgba(200, 200, 200, 0.8);
+  /* color: rgba(200, 200, 200, 0.8); */
+  color: #9ca1de;
   font-size: 1.5rem;
   font-weight: normal;
 }
