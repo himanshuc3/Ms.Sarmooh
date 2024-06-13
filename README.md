@@ -1,45 +1,9 @@
-# askherout
+# Yes or No
 
-This template should help get you started developing with Vue 3 in Vite.
 
-## Recommended IDE Setup
+Here's a template for impressing your better half and get public with her in style or just win her back. Extend this to create infinite cringe content on the web, because it was already the end after tiktok launched. 
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+In case you'd want to know whether it worked for me, I'll keep you guessing. Here's a few additions I didn't add but you can, in case you have too much time lying in your hands:
+- 🎸 Add outro to **Yes** (Kabhi Kabhi aditi zindagi) and **No** (Imran Khan - Bewafa).
+- 👕 Make qr code for the deployed website and become a walking paytm machine
+- 💘 Use it for valentines
