@@ -1,6 +1,7 @@
 <script lang="ts">
 import Fireworks from './components/fireworks/index.vue'
 import gsap from 'gsap'
+import sarmooh from './assets/sarmooh.mp3'
 
 const MADAM_STATUS: { [key: string]: 0 | 1 | 2 } = {
   YES: 0,
@@ -10,16 +11,38 @@ const MADAM_STATUS: { [key: string]: 0 | 1 | 2 } = {
 
 let animation = gsap.timeline({ repeat: 20 })
 
+const audio = new Audio(sarmooh)
+let playing = false
+function playAudio() {
+  if (playing) {
+    return
+  }
+
+  try {
+    audio.play()
+    console.log(audio)
+    playing = true
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 function init() {
   gsap.set('.staggers', { autoAlpha: 1 })
   animation
     .from('.staggers div', { y: 40, opacity: 0, stagger: 2 })
     .to('.staggers div', { y: -40, opacity: 0, stagger: 2 }, 2)
+
+
+  document.addEventListener('click', playAudio)
 }
 
 export default {
   mounted() {
     init()
+  },
+  beforeDestroy() {
+    document.removeEventListener('click', playAudio)
   },
   components: {
     Fireworks
@@ -77,13 +100,11 @@ export default {
 
 <template>
   <div id="root-askherout">
+    <!-- <audio id="audio" ref="audio" src="/media/cc0-audio/t-rex-roar.mp3">
+    </audio> -->
     <Fireworks v-if="status == MADAM_STATUS.YES" v-for="firwork in fireworks" />
     <div v-if="status == MADAM_STATUS.NO" class="askingher">
-      <img
-        class="title-gif"
-        src="https://gifdb.com/images/high/cute-love-bear-roses-ou7zho5oosxnpo6k.gif"
-        alt=""
-      />
+      <img class="title-gif" src="https://gifdb.com/images/high/cute-love-bear-roses-ou7zho5oosxnpo6k.gif" alt="" />
       <h1 class="title">
         Will you
         <div class="parent-staggers">
@@ -133,6 +154,11 @@ export default {
   justify-content: center;
   align-items: center;
 }
+
+#audio {
+  position: absolute;
+}
+
 .askingher {
   width: 100%;
 }
@@ -142,6 +168,7 @@ h2 {
   color: black;
   text-align: center;
 }
+
 .title-gif {
   height: 200px;
 }
@@ -177,12 +204,15 @@ input[type='reset'] {
 .yellow {
   color: #256f56;
 }
+
 .poster-color {
   color: #c66053;
 }
+
 button {
   margin: 5px;
 }
+
 button a {
   font-weight: bold;
   color: white;
@@ -195,6 +225,7 @@ button a {
 .parent-staggers {
   position: relative;
 }
+
 .staggers {
   perspective: 200px;
   visibility: hidden;
@@ -230,6 +261,7 @@ button a {
   font-size: 1.75rem;
   margin-top: 20px;
 }
+
 .final .greyed-sub {
   /* color: rgba(200, 200, 200, 0.8); */
   color: #9ca1de;
@@ -245,6 +277,7 @@ button a {
 button:nth-child(2) {
   background-color: rgb(239, 68, 68);
 }
+
 @media screen and (max-width: 800px) {
   .staggers div {
     font-size: 1.5rem;
